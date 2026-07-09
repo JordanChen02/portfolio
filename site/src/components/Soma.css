@@ -89,7 +89,16 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--eb-fg);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
+}
+
+.soma-subtitle {
+  font-size: 14px;
+  font-family: var(--eb-font-mono);
+  letter-spacing: 0.02em;
+  color: var(--eb-fg-2);
+  margin: 0 0 16px;
+  font-weight: 400;
 }
 
 .soma-positioning {
