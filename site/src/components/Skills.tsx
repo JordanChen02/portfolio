@@ -11,7 +11,7 @@ export function Skills() {
     <Reveal as="section" id="skills" className="section">
       <div style={{ maxWidth: 1180, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: 52, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
-          <p className="eyebrow">Skills</p>
+          <p className="eyebrow">Tools</p>
           <h2 style={{ fontSize: 'clamp(26px, 3.6vw, 36px)', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--eb-fg)', margin: 0 }}>
             Tools I reach for.
           </h2>

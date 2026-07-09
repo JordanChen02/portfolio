@@ -7,10 +7,7 @@ export function About() {
         <p className="eyebrow">About</p>
         <div className="divider-bar" />
         <p style={{ fontSize: 'clamp(19px, 2.4vw, 25px)', lineHeight: 1.65, color: 'var(--eb-fg-1)', fontWeight: 400, margin: 0, textWrap: 'balance' }}>
-          I enjoy building software that makes complex ideas feel simple. My interests span AI,
-          data, health, and trading—fields where I can explore how systems work and turn those
-          insights into thoughtful, intuitive products. I'm always iterating, because the best
-          solutions rarely emerge on the first attempt.
+          The projects on this site came from problems I experienced firsthand. EdgeBoard grew out of years of discretionary NQ trading, where I wanted a better feedback loop than a spreadsheet. SOMA came from coaching clients and wanting a more connected approach to training than scattered apps could provide. My background spans markets and human performance—I build software because it's the best tool I've found for turning domain knowledge into something useful.
         </p>
       </div>
     </Reveal>

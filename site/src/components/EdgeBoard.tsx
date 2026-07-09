@@ -43,13 +43,9 @@ export function EdgeBoard() {
             <div>
               <p className="edgeboard-eyebrow">Featured Project — 01</p>
               <h3 className="edgeboard-title">EdgeBoard</h3>
-              <p className="edgeboard-positioning">A decision-analytics platform for discretionary traders.</p>
+              <p className="edgeboard-positioning">A decision journal and analytics platform for discretionary traders.</p>
               <p className="edgeboard-description">
-                EdgeBoard centralizes trade logging, performance analytics, and behavioral review
-                into one workflow — replacing spreadsheets with structured data and clear feedback
-                loops. The interesting engineering problem was never the trading itself: it was
-                modeling, querying, and visualizing hundreds of structured entries without the UI
-                ever feeling overwhelming.
+                EdgeBoard centralizes trade logging, performance analytics, and behavioral review into one workflow—replacing spreadsheets with structured data and clear feedback loops. The engineering challenge wasn't the trading itself—it was modeling, querying, and visualizing hundreds of structured journal entries without the interface ever feeling overwhelming.
               </p>
             </div>
 

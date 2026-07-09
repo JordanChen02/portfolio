@@ -95,7 +95,7 @@ export function OtherWork() {
         </motion.div>
 
         <p className="other-footer-line">
-          More explorations on{' '}
+          More experiments, research, and technical writing on{' '}
           <a href="https://github.com/JordanChen02" target="_blank" rel="noopener noreferrer">GitHub</a>{' '}
           and <a href="https://medium.com/@jordanchen95" target="_blank" rel="noopener noreferrer">Medium</a>.
         </p>

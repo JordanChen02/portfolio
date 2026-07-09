@@ -54,11 +54,11 @@ export const ohlcImages: Slide[] = [
 ];
 
 export const edgeboardChallenges = [
+  'UI built to make dense performance data legible, not overwhelming',
   'Data model for hundreds of linked journal entries and analytics',
   'Centralized API and caching layer — dashboards stay in sync after edits, no reloads',
   'Advanced analytics: performance, setup grading, behavior, calendar, weekly review',
   'Migrated from mock data to a production Postgres backend with no UX regression',
-  'UI built to make dense performance data legible, not overwhelming',
 ];
 
 export const somaChallenges = [

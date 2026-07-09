@@ -68,7 +68,7 @@ export function Soma() {
               <p className="soma-eyebrow">Featured Project — 02</p>
               <h3 className="soma-title">SOMA</h3>
               <p className="soma-subtitle">σῶμα — "body" (Ancient Greek)</p>
-              <p className="soma-positioning">AI-powered fitness coaching, rebuilt from the ground up.</p>
+              <p className="soma-positioning">A connected platform for training, recovery, and long-term fitness.</p>
               <p className="soma-description">
                 SOMA replaces scattered fitness apps and paper logs with one mobile-first platform
                 for workout programming, progress tracking, and long-term training habits.
