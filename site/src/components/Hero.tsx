@@ -31,8 +31,7 @@ export function Hero() {
             describe the work itself (what gets built, across which
             domains) rather than a job title. */}
         <motion.p className="hero-sub" variants={heroItem}>
-          I build software and products across AI, data, health, and trading. What interests me
-          most is taking a complicated idea and finding the version of it that feels obvious to use.
+          Taking complicated ideas and finding the version that feels obvious to use. Currently building across AI, data, health, and trading.
         </motion.p>
         <motion.div className="hero-buttons" variants={heroContainer}>
           <motion.div variants={heroItem}>
