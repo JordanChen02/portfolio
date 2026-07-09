@@ -1,0 +1,16 @@
+/* Fixed to the viewport (not the hero section) so it persists as one
+   continuous background behind every scrolled section — z-index:-1 keeps it
+   below all normal-flow content regardless of DOM order. */
+.hero-mesh-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-mesh-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

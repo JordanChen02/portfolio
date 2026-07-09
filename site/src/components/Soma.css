@@ -1,0 +1,114 @@
+.soma-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.soma-row {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 64px;
+  align-items: center;
+}
+.soma-row.is-mobile {
+  flex-direction: column;
+  gap: 44px;
+}
+
+.soma-visual {
+  flex: 0 1 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  min-width: 0;
+}
+
+.soma-phone-frame {
+  position: relative;
+  width: clamp(220px, 60vw, 280px);
+}
+.soma-phone-bezel {
+  padding: 14px;
+  border-radius: 46px;
+  background: linear-gradient(160deg, #232a3d, #0b0f18);
+  border: 1px solid var(--eb-border-strong);
+  box-shadow: var(--eb-shadow-lg);
+}
+.soma-phone-screen {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 0.483;
+}
+.soma-phone-home-bar {
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+.soma-phone-notch {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 16px;
+  border-radius: 9px;
+  background: #000;
+  pointer-events: none;
+}
+
+.soma-text {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.soma-eyebrow {
+  font-family: var(--eb-font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eb-teal);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+.soma-title {
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--eb-fg);
+  margin: 0 0 12px;
+}
+
+.soma-positioning {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--eb-fg-1);
+  margin: 0 0 12px;
+}
+
+.soma-description {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--eb-fg-2);
+  margin: 0;
+}
+
+.soma-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}

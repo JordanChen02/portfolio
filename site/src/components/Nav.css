@@ -1,0 +1,141 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px clamp(24px, 5vw, 64px);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+.nav.is-scrolled {
+  background: rgba(10, 14, 23, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--eb-border-subtle);
+}
+@media (max-width: 679px) {
+  .nav {
+    padding: 16px 20px;
+  }
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--eb-font-mono);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: var(--eb-fg);
+}
+.nav-brand:hover {
+  color: var(--eb-fg);
+}
+
+.nav-monogram {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--pf-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0A0E17;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+  font-size: 14px;
+  color: var(--eb-fg-2);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--eb-fg);
+}
+.nav-underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--pf-gradient);
+  transform-origin: left;
+}
+
+/* Fix: nav previously said "Get in Touch" — the exact same label used by
+   the hero's secondary CTA one screen away. "Contact" reads as a plain nav
+   link (matches the other three) and stops competing with the hero button. */
+.nav-contact {
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--eb-border-strong);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--eb-fg-1);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.nav-contact:hover {
+  background: var(--eb-blue-fill);
+  border-color: var(--eb-blue);
+  color: var(--eb-fg-1);
+}
+
+.nav-toggle {
+  background: none;
+  border: 1px solid var(--eb-border-strong);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--eb-fg-1);
+}
+
+.nav-mobile-menu {
+  position: fixed;
+  top: 68px;
+  left: 16px;
+  right: 16px;
+  background: var(--eb-surface-1);
+  border: 1px solid var(--eb-border);
+  border-radius: 14px;
+  box-shadow: var(--eb-shadow-pop);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 99;
+}
+.nav-mobile-link {
+  padding: 13px 14px;
+  border-radius: 10px;
+  font-size: 15.5px;
+  color: var(--eb-fg-1);
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+.nav-mobile-link:hover {
+  background: var(--eb-blue-fill);
+  color: var(--eb-fg-1);
+}

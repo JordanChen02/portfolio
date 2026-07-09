@@ -1,0 +1,60 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: #050918;
+  color: var(--eb-fg-1);
+  font-family: var(--eb-font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--eb-blue);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--eb-blue-300);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--pf-accent-mid);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 5px rgba(var(--pf-glow-rgb), 0.18);
+  transition: box-shadow 0.2s ease;
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.35);
+  color: #fff;
+}
+
+/* Hero entrance + ambient glow drift now run through Motion (MotionConfig
+   reducedMotion="user" in main.tsx handles the reduced-motion fallback for
+   those). This query remains for the few plain-CSS transitions still in
+   use (color/background/box-shadow on hover, nav blur). */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

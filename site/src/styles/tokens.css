@@ -1,0 +1,75 @@
+/* ============================================================
+   EDGEBOARD — Design System Foundations (portfolio adaptation)
+   Source: design-reference/colors_and_type.css
+   ============================================================ */
+
+:root {
+  /* Surfaces (deep navy, layered by elevation) */
+  --eb-bg:            #0A0E17;
+  --eb-surface-1:     #0F1829;
+  --eb-surface-2:     #131D30;
+  --eb-surface-3:     #1A2740;
+
+  /* Hairlines & borders */
+  --eb-border:        #1E2A3F;
+  --eb-border-strong: #28374F;
+  --eb-border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Brand blue (EdgeBoard primary) */
+  --eb-blue:          #3AA4EB;
+  --eb-blue-300:      #9ECBFF;
+  /* Fix: hover fill was too close to surface-1 to register. Alpha-based so it
+     reads consistently regardless of the surface behind it. */
+  --eb-blue-fill:     rgba(58, 164, 235, 0.14);
+
+  /* Secondary accents */
+  --eb-teal:          #4FD1C5;
+  --eb-violet:        #A78BFA;
+  --eb-amber:         #E0A93C;
+
+  /* Text */
+  --eb-fg:            #F1F5F9;
+  --eb-fg-1:          #E5E7EB;
+  --eb-fg-2:          #94A3B8;
+  --eb-fg-3:          #64748B;
+
+  /* Fonts */
+  --eb-font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --eb-font-mono: 'Geist Mono', 'SF Mono', 'JetBrains Mono', monospace;
+
+  /* Radii */
+  --eb-r-md:   10px;
+  --eb-r-lg:   14px;
+  --eb-r-pill: 999px;
+
+  /* Shadows */
+  --eb-shadow-sm:  0 1px 2px rgba(3, 7, 18, 0.40);
+  --eb-shadow-md:  0 6px 14px rgba(3, 7, 18, 0.45);
+  --eb-shadow-lg:  0 14px 40px rgba(3, 7, 18, 0.55);
+  --eb-shadow-pop: 0 18px 50px rgba(0, 0, 0, 0.55);
+
+  /* Motion */
+  --eb-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ============================================================
+     PORTFOLIO ACCENT GRADIENT
+     Fix: was #38BDF8 → #8B5CF6 (generic sky/purple, matched neither
+     product). This is now a direct copy of SOMA's own "aurora" gradient —
+     the exact --aurora token from fitness-journal/src/app/globals.css
+     (dark mode), which SOMA applies to its primary workout CTA buttons,
+     its logo mark, and its glow accents. Teal → blue → violet, 3-stop,
+     135deg. The portfolio's primary color now literally is SOMA's button
+     color, not an approximation of it.
+     ============================================================ */
+  --pf-accent-1: #1BAE8B;
+  --pf-accent-mid: #2E82BC;
+  --pf-accent-2: #6552D0;
+  --pf-gradient: linear-gradient(135deg, var(--pf-accent-1) 0%, var(--pf-accent-mid) 48%, var(--pf-accent-2) 100%);
+
+  /* Fix: primary button glow was hardcoded to a purple with no relationship
+     to the gradient. Derived from the aurora gradient's middle (blue) stop —
+     also SOMA's --signal token and identical to EdgeBoard's own primary
+     blue (#3AA4EB is close; #2E82BC is aurora's in-gradient blue) — so the
+     glow reads as coming from the button itself. */
+  --pf-glow-rgb: 46, 130, 188;
+}

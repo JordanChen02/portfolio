@@ -1,0 +1,87 @@
+.edgeboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   Fix (critical): the reference layout stacked intro text (max-width
+   760px) → a 1100px screenshot carousel → highlights (max-width 900px)
+   as three vertically-stacked blocks with different widths, so the
+   engineering highlights — the actual technical substance — sat below a
+   screenshot most visitors wouldn't scroll past. Rebuilt as a single
+   side-by-side row inside one shared max-width, screenshot and narrative
+   reading together instead of one gating the other. Mirrors how the SOMA
+   section already pairs its phone mockup with its text column, so the two
+   case studies read as a matched pair (this one puts the screenshot on the
+   left; SOMA puts its mockup on the right — alternating rhythm down the page).
+   ============================================================ */
+.edgeboard-row {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+.edgeboard-row.is-mobile {
+  flex-direction: column;
+  gap: 40px;
+}
+
+.edgeboard-visual {
+  flex: 0 0 55%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.edgeboard-row.is-mobile .edgeboard-visual {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.edgeboard-text {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 6px;
+}
+
+.edgeboard-eyebrow {
+  font-family: var(--eb-font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eb-violet);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+.edgeboard-title {
+  font-size: clamp(30px, 3.6vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--eb-fg);
+  margin: 0 0 12px;
+}
+
+.edgeboard-positioning {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--eb-fg-1);
+  margin: 0 0 12px;
+}
+
+.edgeboard-description {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--eb-fg-2);
+  margin: 0;
+}
+
+.edgeboard-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
