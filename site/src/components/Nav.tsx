@@ -62,7 +62,7 @@ export function Nav() {
     <>
       <nav className={`nav${scrolled ? ' is-scrolled' : ''}`}>
         <a href="#hero" className="nav-brand">
-          <span className="nav-monogram">JC</span>
+          <img src="/favicon-32x32.png" alt="Jordan Chen" className="nav-monogram-icon" />
           Jordan Chen
         </a>
 

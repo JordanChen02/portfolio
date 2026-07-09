@@ -38,18 +38,11 @@
   color: var(--eb-fg);
 }
 
-.nav-monogram {
+.nav-monogram-icon {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
-  background: var(--pf-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  color: #0A0E17;
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .nav-links {
