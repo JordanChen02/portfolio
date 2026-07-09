@@ -204,11 +204,28 @@ export default function MeshBackground() {
     // frame (lerp 0.04) so it glides rather than snaps.
     let mouseNX = 0, mouseNY = 0;
     let camOffX = 0, camOffY = 0;
+    // Cursor position in CSS px. Canvas is fixed inset:0, so client coords map
+    // straight onto the canvas. Start far offscreen so nothing responds until
+    // the pointer actually moves.
+    let mousePX = -9999, mousePY = -9999;
     const onMouseMove = (e: MouseEvent) => {
       mouseNX = (e.clientX / window.innerWidth  - 0.5) * 2;
       mouseNY = (e.clientY / window.innerHeight - 0.5) * 2;
+      mousePX = e.clientX;
+      mousePY = e.clientY;
     };
+    // When the pointer leaves the window, park it offscreen so any lit node
+    // eases back to rest instead of staying stuck bright.
+    const onMouseLeave = () => { mousePX = -9999; mousePY = -9999; };
     window.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseleave", onMouseLeave);
+
+    // Per-node proximity excitement, eased frame-to-frame so it never pops.
+    // PROX_RADIUS is the soft reach around the cursor; PROX_EASE controls how
+    // gently a node fades in and out of its response.
+    const proximity = new Float32Array(NODES.length);
+    const PROX_RADIUS = 130;
+    const PROX_EASE = 0.07;
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -254,6 +271,17 @@ export default function MeshBackground() {
       const transformed: V3[] = NODES.map(({ pos }) => rotX(rotY(pos, ry), rx));
       const projected = transformed.map(p => project(p, projCx, projCy));
 
+      // Proximity response — ease each node toward a smooth distance falloff
+      // from the cursor. Nodes within PROX_RADIUS softly "wake up"; everything
+      // else eases back to zero. Blends with (never replaces) the twinkle.
+      for (let n = 0; n < projected.length; n++) {
+        const dx = projected[n][0] - mousePX;
+        const dy = projected[n][1] - mousePY;
+        const raw = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / PROX_RADIUS);
+        const target = raw * raw * (3 - 2 * raw); // smoothstep — no hard edge
+        proximity[n] += (target - proximity[n]) * PROX_EASE;
+      }
+
       const depth = (z: number) => Math.max(0.10, Math.min(1.0, 1 - z / 580));
 
       // Sort triangles back → front
@@ -298,12 +326,16 @@ export default function MeshBackground() {
         const avgS = (as_ + bs_) * 0.5;
         const ca = NODES[i].color, cb = NODES[j].color;
 
+        // Very restrained lift on edges touching an active node — same colors,
+        // just a touch more presence while the constellation responds.
+        const eb = 1 + Math.max(proximity[i], proximity[j]) * 0.4;
+
         let stroke: string;
-        if      (ca === "teal"   || cb === "teal")   stroke = `rgba(0, 212, 196, ${0.22 * d})`;
-        else if (ca === "violet" || cb === "violet") stroke = `rgba(150, 75, 255, ${0.20 * d})`;
-        else if (ca === "cyan"   || cb === "cyan")   stroke = `rgba(68, 218, 255, ${0.20 * d})`;
-        else if (ca === "blue"   || cb === "blue")   stroke = `rgba(95, 145, 255, ${0.18 * d})`;
-        else stroke = `rgba(170, 210, 255, ${(0.065 + 0.075 * d) * Math.min(1, avgS * 1.15)})`;
+        if      (ca === "teal"   || cb === "teal")   stroke = `rgba(0, 212, 196, ${0.22 * d * eb})`;
+        else if (ca === "violet" || cb === "violet") stroke = `rgba(150, 75, 255, ${0.20 * d * eb})`;
+        else if (ca === "cyan"   || cb === "cyan")   stroke = `rgba(68, 218, 255, ${0.20 * d * eb})`;
+        else if (ca === "blue"   || cb === "blue")   stroke = `rgba(95, 145, 255, ${0.18 * d * eb})`;
+        else stroke = `rgba(170, 210, 255, ${(0.065 + 0.075 * d) * Math.min(1, avgS * 1.15) * eb})`;
 
         ctx.beginPath();
         ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
@@ -325,26 +357,28 @@ export default function MeshBackground() {
         const d   = depth(z);
         const isAccent = color !== "white";
         const tk  = isAccent ? twinkleFor(i, t) : 0;
+        const ex  = proximity[i]; // eased cursor-proximity response, 0 at rest
         const r = pal.r * scale;
 
-        // Outer halo (accent nodes only) — expands and brightens during a glint
+        // Outer halo (accent nodes only) — expands/brightens during a glint,
+        // and eases wider as the cursor comes near (same accent glow color).
         if (isAccent) {
-          const haloR = r * (4.8 + tk * 4.0);
+          const haloR = r * (4.8 + tk * 4.0 + ex * 2.2);
           const gr = ctx.createRadialGradient(sx, sy, 0, sx, sy, haloR);
           gr.addColorStop(0, pal.glow);
           gr.addColorStop(1, "rgba(0,0,0,0)");
           ctx.save();
-          ctx.globalAlpha = Math.min(1, d * (0.42 + tk * 0.55));
+          ctx.globalAlpha = Math.min(1, d * (0.42 + tk * 0.55 + ex * 0.30));
           ctx.beginPath(); ctx.arc(sx, sy, haloR, 0, Math.PI * 2);
           ctx.fillStyle = gr; ctx.fill();
           ctx.restore();
         }
 
-        // Node circle — glows brighter during a glint
+        // Node circle — glows brighter during a glint and when the cursor nears
         ctx.save();
         ctx.shadowColor = pal.glow;
-        ctx.shadowBlur  = pal.glowBlur * scale * (1 + tk * 1.0);
-        ctx.globalAlpha = Math.min(1, d * (isAccent ? 0.90 + tk * 0.55 : 0.62));
+        ctx.shadowBlur  = pal.glowBlur * scale * (1 + tk * 1.0 + ex * 0.6);
+        ctx.globalAlpha = Math.min(1, d * (isAccent ? 0.90 + tk * 0.55 + ex * 0.28 : 0.62 + ex * 0.20));
         ctx.beginPath(); ctx.arc(sx, sy, r, 0, Math.PI * 2);
         ctx.fillStyle = pal.fill;
         ctx.fill();
@@ -370,6 +404,7 @@ export default function MeshBackground() {
       cancelAnimationFrame(animId);
       ro.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseleave", onMouseLeave);
     };
   }, []);
 
