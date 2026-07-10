@@ -24,6 +24,7 @@ export interface Slide {
   label: string;
   url?: string;
   aspect?: number;
+  objectPosition?: string;
 }
 
 export const edgeboardImages: Slide[] = [
@@ -35,7 +36,7 @@ export const edgeboardImages: Slide[] = [
 ];
 
 export const somaImages: Slide[] = [
-  { src: somaLogin, label: 'Sign In' },
+  { src: somaLogin, label: 'Sign In', objectPosition: 'center 85%' },
   { src: somaToday, label: 'Today' },
   { src: somaWorkouts, label: 'Workouts' },
   { src: somaCalendar, label: 'Calendar' },

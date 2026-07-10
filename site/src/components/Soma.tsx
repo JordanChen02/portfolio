@@ -44,7 +44,7 @@ export function Soma() {
                     slideKey={index}
                     src={current.src}
                     alt={`${current.label} screen of SOMA`}
-                    imgStyle={{ objectFit: 'cover', objectPosition: 'top' }}
+                    imgStyle={{ objectFit: 'cover', objectPosition: 'top', transform: index === 0 ? 'translateY(7px)' : undefined }}
                     hoverScale
                   />
                   <div className="soma-phone-home-bar" />

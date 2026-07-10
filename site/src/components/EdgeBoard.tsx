@@ -80,6 +80,39 @@ export function EdgeBoard() {
           </div>
 
         </div>
+
+        <div className="edgeboard-demo">
+          <p className="edgeboard-demo-eyebrow">Product Walkthrough</p>
+          <div className="chrome-window">
+            <div className="chrome-tabbar">
+              <div className="chrome-traffic-lights">
+                <div className="chrome-dot" style={{ background: '#ff5f57' }} />
+                <div className="chrome-dot" style={{ background: '#febc2e' }} />
+                <div className="chrome-dot" style={{ background: '#28c840' }} />
+              </div>
+              <div className="chrome-tab">
+                <div className="chrome-tab-favicon" />
+                <span className="chrome-tab-title">EdgeBoard — Demo</span>
+              </div>
+            </div>
+            <div className="chrome-toolbar">
+              <div className="chrome-icon-dot"><span /></div>
+              <div className="chrome-urlbar">
+                <span />
+                <span className="chrome-url-text">youtube.com/watch?v=EbZKJiMNogw</span>
+              </div>
+              <div className="chrome-icon-dot"><span /></div>
+            </div>
+            <div className="edgeboard-demo-body">
+              <iframe
+                src="https://www.youtube.com/embed/EbZKJiMNogw"
+                title="EdgeBoard Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </Reveal>
   );

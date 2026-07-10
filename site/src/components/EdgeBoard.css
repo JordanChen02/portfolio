@@ -19,7 +19,7 @@
 .edgeboard-row {
   display: flex;
   gap: 48px;
-  align-items: flex-start;
+  align-items: center;
 }
 .edgeboard-row.is-mobile {
   flex-direction: column;
@@ -27,7 +27,7 @@
 }
 
 .edgeboard-visual {
-  flex: 0 0 55%;
+  flex: 0 0 65%;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -84,4 +84,37 @@
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 4px;
+}
+
+.edgeboard-demo {
+  margin-top: 32px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.edgeboard-demo-eyebrow {
+  font-family: var(--eb-font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eb-violet);
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.edgeboard-demo-body {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #05070c;
+}
+
+.edgeboard-demo-body iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
