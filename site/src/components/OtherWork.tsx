@@ -1,18 +1,63 @@
-import { motion } from 'motion/react';
+import { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { Reveal } from '../motion/Reveal';
 import { useCarousel } from '../hooks/useCarousel';
 import { useViewportWidth } from '../hooks/useViewportWidth';
 import { CarouselControls } from './CarouselControls';
 import { CrossfadeImage } from './CrossfadeImage';
-import { CornerArrowIcon } from './icons';
+import { CornerArrowIcon, XIcon } from './icons';
 import { SPRING_SOFT } from '../motion/variants';
 import { ohlcImages } from '../data/projects';
 import './OtherWork.css';
+
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <motion.div
+      className="lightbox-backdrop"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image lightbox"
+    >
+      <motion.img
+        src={src}
+        alt={alt}
+        className="lightbox-img"
+        initial={{ scale: 0.93, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.93, opacity: 0 }}
+        transition={{ duration: 0.18 }}
+        onClick={e => e.stopPropagation()}
+      />
+      <button className="lightbox-close" onClick={onClose} aria-label="Close lightbox">
+        <XIcon size={18} />
+      </button>
+    </motion.div>,
+    document.body
+  );
+}
 
 export function OtherWork() {
   const { index, goTo, prev, next } = useCarousel(ohlcImages.length);
   const width = useViewportWidth();
   const isMobile = width < 680;
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const closeLightbox = useCallback(() => setLightboxOpen(false), []);
 
   const current = ohlcImages[index];
 
@@ -20,8 +65,6 @@ export function OtherWork() {
     <Reveal
       as="section"
       id="other-work"
-      /* Fix: same chapter-break treatment as SOMA — signals the shift from
-         the two featured case studies into the lighter "other work" entry. */
       className="section section-divider"
     >
       <div className="other-container">
@@ -71,7 +114,14 @@ export function OtherWork() {
             </div>
 
             <div className="other-visual">
-              <div className="other-frame">
+              <div
+                className="other-frame other-frame-clickable"
+                onClick={() => setLightboxOpen(true)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Enlarge: ${current.label}`}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLightboxOpen(true); } }}
+              >
                 <CrossfadeImage
                   slideKey={index}
                   src={current.src}
@@ -100,6 +150,16 @@ export function OtherWork() {
           and <a href="https://medium.com/@jordanchen95" target="_blank" rel="noopener noreferrer">Medium</a>.
         </p>
       </div>
+
+      <AnimatePresence>
+        {lightboxOpen && (
+          <Lightbox
+            src={current.src}
+            alt={`${current.label} — OHLC Hypothesis Lab`}
+            onClose={closeLightbox}
+          />
+        )}
+      </AnimatePresence>
     </Reveal>
   );
 }
