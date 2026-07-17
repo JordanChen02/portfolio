@@ -41,9 +41,9 @@ export function Contact() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 2 }}>
           <span style={{
-            fontSize: 13,
+            fontSize: 14,
             color: 'var(--eb-fg-2)',
-            opacity: 0.55,
+            opacity: 0.75,
             fontFamily: 'var(--eb-font-mono, monospace)',
             letterSpacing: '0.01em',
           }}>
@@ -58,13 +58,13 @@ export function Contact() {
               gap: 4,
               padding: '3px 8px',
               background: 'transparent',
-              border: `1px solid ${copied ? 'rgba(0,229,200,0.28)' : 'rgba(255,255,255,0.09)'}`,
+              border: `1px solid ${copied ? 'rgba(0,229,200,0.4)' : 'rgba(255,255,255,0.18)'}`,
               borderRadius: 5,
               cursor: 'pointer',
               color: copied ? 'var(--eb-teal)' : 'var(--eb-fg-2)',
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 500,
-              opacity: copied ? 1 : 0.55,
+              opacity: copied ? 1 : 0.8,
               transition: 'color 0.18s, opacity 0.18s, border-color 0.18s',
               outline: 'none',
             }}
