@@ -31,7 +31,7 @@ export function Hero() {
             describe the work itself (what gets built, across which
             domains) rather than a job title. */}
         <motion.p className="hero-sub" variants={heroItem}>
-          Taking complicated ideas and finding the version that feels obvious to use. Currently building across AI, data, health, and trading.
+          Turning intuition into systems—and complexity into clarity. Currently building across AI, data, health, and trading.
         </motion.p>
         <motion.div className="hero-buttons" variants={heroContainer}>
           <motion.div variants={heroItem}>
