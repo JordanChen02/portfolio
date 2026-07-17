@@ -56,7 +56,7 @@ export function Contact() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 4,
-              padding: '3px 8px',
+              padding: '3px 11px',
               background: 'transparent',
               border: `1px solid ${copied ? 'rgba(0,229,200,0.4)' : 'rgba(255,255,255,0.18)'}`,
               borderRadius: 5,
