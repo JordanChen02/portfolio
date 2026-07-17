@@ -1,4 +1,4 @@
-import edgeboardDashboard from '../assets/edgeboard_dashboard.webp';
+import edgeboardDashboard from '../assets/edgeboard_dashboard_renewed.png';
 import edgeboardPerformance from '../assets/edgeboard_performance.webp';
 import edgeboardCalendar from '../assets/edgeboard_calendar.png';
 import edgeboardChecklist from '../assets/edgeboard_checklist.webp';
