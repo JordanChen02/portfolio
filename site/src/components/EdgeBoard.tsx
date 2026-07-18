@@ -99,13 +99,13 @@ export function EdgeBoard() {
               <div className="chrome-icon-dot"><span /></div>
               <div className="chrome-urlbar">
                 <span />
-                <span className="chrome-url-text">youtube.com/watch?v=EbZKJiMNogw</span>
+                <span className="chrome-url-text">youtube.com/watch?v=KU61j-Uoi7M</span>
               </div>
               <div className="chrome-icon-dot"><span /></div>
             </div>
             <div className="edgeboard-demo-body">
               <iframe
-                src="https://www.youtube.com/embed/EbZKJiMNogw"
+                src="https://www.youtube.com/embed/KU61j-Uoi7M"
                 title="EdgeBoard Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
